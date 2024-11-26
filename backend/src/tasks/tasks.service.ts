@@ -41,4 +41,18 @@ export class TasksService {
 
     return { message: `Task with ID ${id} has been successfully deleted` };
   }
+
+  async getTasksByUser(userId: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new NotFoundException(`User with ID ${userId} not found`);
+    }
+
+    return this.prisma.task.findMany({
+      where: { assignedToId: userId },
+    });
+  }
 }
