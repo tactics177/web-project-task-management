@@ -15,6 +15,7 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [
     ProjectService,
