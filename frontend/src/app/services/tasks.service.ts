@@ -13,4 +13,8 @@ export class TasksService {
   getTasksByUser(userId: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/tasks/user/${userId}`);
   }
+
+  updateTask(taskId: string, updatedTask: any): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/tasks/${taskId}`, updatedTask);
+  }  
 }
