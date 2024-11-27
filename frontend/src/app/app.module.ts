@@ -8,12 +8,16 @@ import { CreateProjectComponent } from './components/create-project/create-proje
 import { ProjectService } from './services/projects.service';
 import {AppRoutingModule} from "./app-routing.module";
 import {ProjectsComponent} from "./projects/projects.component";
+import { TaskCardComponent } from './task-card/task-card.component';
+import { TaskBoardComponent } from './task-board/task-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateProjectComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    TaskCardComponent,
+    TaskBoardComponent
   ],
   imports: [
     BrowserModule,
