@@ -1,0 +1,24 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    
+    <div class="input-wrapper">
+       <i class="fa-solid fa-envelope input-icon"></i>
+       <input formControlName="email" class="input-login"
+              type="email" required="true" placeholder="Enter email: ">
+    </div>
+    
+    <div class="input-wrapper">
+       <i class="fa-solid fa-lock input-icon"></i>
+       <input formControlName="password" class="input-login"
+              type="password" required="true" placeholder="Enter password: " >
+       </div>
+
+    <button class="login-button"
+        [class.register-button-disabled]="loginForm.invalid"
+        >
+    Login</button>
+
+
+    <p *ngIf="loginForm.invalid && (loginForm.touched || loginForm.dirty)" class="register_error_text">
+       {{ getErrorLabel }}
+     </p>
+</form>

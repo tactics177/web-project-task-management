@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateProjectComponent } from './components/create-project/create-project.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 const routes: Routes = [
   { path: 'create-project', component: CreateProjectComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: '', redirectTo: '/projects', pathMatch: 'full' }
-];
+  { path: '', redirectTo: '/projects', pathMatch: 'full' },
+  {path:'register', component:RegisterComponent},
+  {path:'login', component:LoginComponent},
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
