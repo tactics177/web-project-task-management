@@ -4,6 +4,8 @@ import { CreateProjectComponent } from './components/create-project/create-proje
 import { ProjectsComponent } from './projects/projects.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { TaskBoardComponent } from './task-board/task-board.component';
+
 
 const routes: Routes = [
   { path: 'create-project', component: CreateProjectComponent },
@@ -11,7 +13,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/projects', pathMatch: 'full' },
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
-]
+  { path: 'tasks-board', component: TaskBoardComponent }
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

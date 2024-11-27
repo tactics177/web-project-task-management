@@ -12,6 +12,9 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { LoginComponent } from './components/auth/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LogoutComponent } from './components/auth/logout/logout.component';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { TaskBoardComponent } from './task-board/task-board.component';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
     RegisterComponent,
     LoginComponent,
     LogoutComponent
+    TaskCardComponent,
+    TaskBoardComponent
+
   ],
   imports: [
     BrowserModule,
