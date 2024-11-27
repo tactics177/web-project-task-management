@@ -14,6 +14,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -23,10 +24,10 @@ import { TaskBoardComponent } from './task-board/task-board.component';
     ProjectsComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
     TaskCardComponent,
-    TaskBoardComponent
-
+    TaskBoardComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
