@@ -26,9 +26,10 @@ export class ProjectsService {
     }
 
     async update(id: string, updateProjectDto: UpdateProjectDto) {
+        const { id: _, ...data } = updateProjectDto; // Exclude the id from the data object
         return this.prisma.project.update({
             where: { id },
-            data: updateProjectDto,
+            data,
         });
     }
 

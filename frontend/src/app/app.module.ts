@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {CreateProjectComponent} from './components/create-project/create-project.component';
@@ -15,6 +15,7 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditProjectComponent } from './components/edit-project/edit-project.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     TaskCardComponent,
     TaskBoardComponent,
     ProjectListComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+
   ],
   providers: [
     ProjectService,
