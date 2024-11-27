@@ -1,11 +1,22 @@
 <div class="bg-white rounded-lg shadow-md p-4 mb-4">
-    <h3 class="text-lg font-semibold text-gray-800">{{ task.title }}</h3>
-    <p class="text-sm text-gray-600">{{ task.description || 'No description' }}</p>
-    <div class="mt-2">
-      <span class="text-xs font-medium text-gray-700">Priority: {{ task.priority }}</span>
-    </div>
-    <div class="mt-2">
-      <span class="text-xs font-medium text-gray-700">Due Date: {{ task.dueDate | date }}</span>
-    </div>
+  <h3 class="text-lg font-semibold text-gray-800">{{ task.title }}</h3>
+  
+  <p class="text-sm text-gray-600">{{ task.description || 'No description' }}</p>
+  
+  <div class="mt-2">
+    <span class="text-xs font-medium text-gray-700">Priority: {{ task.priority }}</span>
   </div>
   
+  <div class="mt-2">
+    <span class="text-xs font-medium text-gray-700">Due Date: {{ task.dueDate | date }}</span>
+  </div>
+
+  <div class="mt-2 flex flex-wrap gap-2">
+    <span
+      *ngFor="let tag of task.tags"
+      class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-1 rounded"
+    >
+      {{ tag }}
+    </span>
+  </div>
+</div>
