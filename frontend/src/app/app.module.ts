@@ -26,7 +26,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     LogoutComponent,
     TaskCardComponent,
     TaskBoardComponent,
-    ProjectListComponent
+    ProjectListComponent,
     NavbarComponent
   ],
   imports: [
