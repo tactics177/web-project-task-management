@@ -1,0 +1,34 @@
+<form [formGroup]="registerForm" (ngSubmit)="addUser()">
+
+    <div class="input-wrapper">
+        <i class="fa-solid fa-user input-icon"></i>
+        <input formControlName="name" class="input-registration"
+            type="text" required="true" placeholder="Enter name: ">
+    </div>
+    
+    <div class="input-wrapper">
+        <i class="fa-solid fa-envelope input-icon"></i>
+        <input formControlName="email" class="input-registration"
+            type="text" required="true" placeholder="Enter email: ">
+    </div>
+    
+    <div class="input-wrapper">
+        <i class="fa-solid fa-lock input-icon"></i>
+        <input  formControlName="password" id="password" class="input-registration"
+            type="password" required="true"  placeholder="Enter password: " >
+    </div>
+   
+    <div class="input-wrapper">
+        <i class="fa-solid fa-lock input-icon"></i>
+        <input formControlName="confirmPassword" class="input-registration"
+            type="password" required="true"  placeholder="Confirm password: ">
+    </div>
+    
+    <button class="register-button" [class.register-button-disabled]="registerForm.invalid">
+    Register</button>
+
+    <p *ngIf="registerForm.invalid && (registerForm.touched || registerForm.dirty)" class="register_error_text">
+           {{ getErrorLabel }}
+         </p>
+
+</form>
