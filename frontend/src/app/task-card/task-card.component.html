@@ -1,11 +1,85 @@
 <div class="bg-white rounded-lg shadow-md p-4 mb-4">
-    <h3 class="text-lg font-semibold text-gray-800">{{ task.title }}</h3>
-    <p class="text-sm text-gray-600">{{ task.description || 'No description' }}</p>
-    <div class="mt-2">
-      <span class="text-xs font-medium text-gray-700">Priority: {{ task.priority }}</span>
-    </div>
-    <div class="mt-2">
-      <span class="text-xs font-medium text-gray-700">Due Date: {{ task.dueDate | date }}</span>
-    </div>
+  <div class="flex justify-end space-x-2">
+    <button
+      *ngIf="!isEditing"
+      (click)="enableEditing()"
+      class="text-blue-600 hover:underline"
+    >
+      Edit
+    </button>
+    <button
+      *ngIf="isEditing"
+      (click)="saveChanges()"
+      class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+    >
+      Save
+    </button>
+    <button
+      *ngIf="isEditing"
+      (click)="cancelEditing()"
+      class="bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-700"
+    >
+      Cancel
+    </button>
   </div>
-  
+
+  <div *ngIf="!isEditing; else editTitle">
+    <h3 class="text-lg font-semibold text-gray-800">{{ task.title }}</h3>
+  </div>
+  <ng-template #editTitle>
+    <input
+      [(ngModel)]="editableTask.title"
+      class="border border-gray-300 rounded w-full p-2"
+      placeholder="Task Title"
+    />
+  </ng-template>
+
+  <div *ngIf="!isEditing; else editDescription">
+    <p class="text-sm text-gray-600">
+      {{ task.description || 'No description' }}
+    </p>
+  </div>
+  <ng-template #editDescription>
+    <textarea
+      [(ngModel)]="editableTask.description"
+      class="border border-gray-300 rounded w-full p-2"
+      placeholder="Task Description"
+    ></textarea>
+  </ng-template>
+
+  <div class="mt-2">
+    <span *ngIf="!isEditing; else editPriority" class="text-xs font-medium text-gray-700">
+      Priority: {{ task.priority }}
+    </span>
+    <ng-template #editPriority>
+      <input
+        type="number"
+        [(ngModel)]="editableTask.priority"
+        class="border border-gray-300 rounded w-20 p-1"
+        placeholder="Priority"
+      />
+    </ng-template>
+  </div>
+
+  <div class="mt-2">
+    <span *ngIf="!isEditing; else editDueDate" class="text-xs font-medium text-gray-700">
+      Due Date: {{ task.dueDate | date }}
+    </span>
+    <ng-template #editDueDate>
+      <input
+        type="date"
+        [(ngModel)]="editableTask.dueDate"
+        class="border border-gray-300 rounded p-1"
+      />
+    </ng-template>
+  </div>
+
+  <div class="mt-2 flex flex-wrap gap-2">
+    <span
+      *ngFor="let tag of task.tags"
+      class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-1 rounded"
+    >
+      {{ tag }}
+    </span>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [
     ProjectService,
