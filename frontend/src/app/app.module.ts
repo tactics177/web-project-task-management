@@ -10,6 +10,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {ProjectsComponent} from "./projects/projects.component";
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TaskBoardComponent } from './task-board/task-board.component';
     CreateProjectComponent,
     ProjectsComponent,
     TaskCardComponent,
-    TaskBoardComponent
+    TaskBoardComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
