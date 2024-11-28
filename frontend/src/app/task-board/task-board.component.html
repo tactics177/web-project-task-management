@@ -1,6 +1,6 @@
 <div class="flex flex-col md:flex-row gap-4 p-4">
     <div class="flex-1">
-      <h2 class="text-xl font-bold mb-4">To Do</h2>
+      <h2 class="text-xl font-bold mb-4">A faire</h2>
       <div class="space-y-4">
         <app-task-card
           *ngFor="let task of getTasksByStatus('TO_DO')"
@@ -10,7 +10,7 @@
     </div>
   
     <div class="flex-1">
-      <h2 class="text-xl font-bold mb-4">In Progress</h2>
+      <h2 class="text-xl font-bold mb-4">En cours</h2>
       <div class="space-y-4">
         <app-task-card
           *ngFor="let task of getTasksByStatus('IN_PROGRESS')"
@@ -20,7 +20,7 @@
     </div>
   
     <div class="flex-1">
-      <h2 class="text-xl font-bold mb-4">Completed</h2>
+      <h2 class="text-xl font-bold mb-4">Terminé</h2>
       <div class="space-y-4">
         <app-task-card
           *ngFor="let task of getTasksByStatus('COMPLETED')"
@@ -30,7 +30,7 @@
     </div>
   
     <div class="flex-1">
-      <h2 class="text-xl font-bold mb-4">Blocked</h2>
+      <h2 class="text-xl font-bold mb-4">Bloquant</h2>
       <div class="space-y-4">
         <app-task-card
           *ngFor="let task of getTasksByStatus('BLOCKED')"

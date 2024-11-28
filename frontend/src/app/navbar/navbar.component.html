@@ -1,19 +1,19 @@
 <nav class="bg-stone-100 text-white shadow-md">
     <div class="container mx-auto px-4 flex justify-between items-center h-16">
-      <a routerLink="/" class="text-2xl font-bold">
-        Tasks App
+      <a routerLink="/" class="flex items-center logo-link">
+        <img src="assets/logo.png" alt="Logo" class="h-10" style="height: 70px;" />
       </a>
   
       <div class="flex space-x-6">
         <a
           routerLink="/projects"
           class="hover:underline hover:text-gray-200"
-          >Projects</a
+          >Projets</a
         >
         <a
           routerLink="/tasks-board"
           class="hover:underline hover:text-gray-200"
-          >Tasks</a
+          >Kanban</a
         >
       </div>
   
@@ -21,10 +21,10 @@
         <a
           routerLink="/profile"
           class="hover:underline hover:text-gray-200"
-          >Profile</a
+          >Profil</a
         >
-        <a routerLink="/register">Register</a>
-        <a routerLink="/login">Login</a>
+        <a routerLink="/register">S'inscrire</a>
+        <a routerLink="/login">Se connecter</a>
         <app-logout></app-logout>
       </div>
     </div>

@@ -1,16 +1,17 @@
+
 <div class="space-y-6 p-6 bg-gray-100 min-h-screen">
     <div *ngFor="let project of projects"
-         class="bg-white shadow-lg rounded-xl p-6 border border-gray-200 w-full transform transition hover:shadow-2xl hover:scale-[1.02]">
+         class="bg-gray-300 shadow-lg rounded-xl p-6 border border-gray-200 w-full transform transition hover:shadow-2xl hover:scale-[1.02]">
         <div class="flex justify-between items-center">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ project.name }}</h2>
                 <p class="text-gray-600 mb-4">{{ project.description }}</p>
             </div>
             <div>
-              <button [routerLink]="['/edit-project', project.id]" class="text-blue-600 hover:text-blue-800">Edit</button>
+              <button [routerLink]="['/edit-project', project.id]" class="text-blue-600 hover:text-blue-800"><i class="fa-solid fa-pen-to-square"></i></button>
               <button (click)="deleteProject(project.id)"
                         class="pl-4 text-red-600 hover:text-red-800 font-medium transition">
-                    Delete
+                    <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
         </div>
