@@ -9,6 +9,7 @@ export class TasksController {
 
   @Post()
   async createTask(@Body() createTaskDto: CreateTaskDto) {
+    console.log(`createTaskDto: ${JSON.stringify(createTaskDto)}`)
     return this.tasksService.createTask(createTaskDto);
   }
 

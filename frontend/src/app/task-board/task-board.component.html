@@ -1,42 +1,50 @@
 <div class="flex flex-col md:flex-row gap-4 p-4">
     <div class="flex-1">
       <h2 class="text-xl font-bold mb-4">To Do</h2>
-      <div class="space-y-4">
+      <div class="space-y-4 overflow-scroll h-screen bg-gray-100 border border-indigo-100">
         <app-task-card
           *ngFor="let task of getTasksByStatus('TO_DO')"
           [task]="task">
         </app-task-card>
       </div>
+      <app-create-task-button (emitF)="acceptEmitF($event)"></app-create-task-button>
     </div>
   
     <div class="flex-1">
       <h2 class="text-xl font-bold mb-4">In Progress</h2>
-      <div class="space-y-4">
+      <div class="space-y-4 overflow-scroll h-screen bg-gray-100 border border-indigo-100">
         <app-task-card
           *ngFor="let task of getTasksByStatus('IN_PROGRESS')"
           [task]="task">
         </app-task-card>
       </div>
+      <app-create-task-button (emitF)="acceptEmitF($event)"></app-create-task-button>
     </div>
   
     <div class="flex-1">
       <h2 class="text-xl font-bold mb-4">Completed</h2>
-      <div class="space-y-4">
+      <div class="space-y-4 overflow-scroll h-screen bg-gray-100 border border-indigo-100">
         <app-task-card
           *ngFor="let task of getTasksByStatus('COMPLETED')"
           [task]="task">
         </app-task-card>
       </div>
+      <app-create-task-button (emitF)="acceptEmitF($event)"></app-create-task-button>
     </div>
   
     <div class="flex-1">
       <h2 class="text-xl font-bold mb-4">Blocked</h2>
-      <div class="space-y-4">
+      <div class="space-y-4 overflow-scroll h-screen bg-gray-100 border border-indigo-100">
         <app-task-card
           *ngFor="let task of getTasksByStatus('BLOCKED')"
           [task]="task">
         </app-task-card>
       </div>
+      <app-create-task-button (emitF)="acceptEmitF($event)"></app-create-task-button>
     </div>
   </div>
+
+  <app-create-task-formular *ngIf="showFormular"
+    (emitCloseF)="acceptEmitCloseF($event)"
+  ></app-create-task-formular>
   
