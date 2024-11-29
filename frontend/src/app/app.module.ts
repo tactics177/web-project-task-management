@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {CreateProjectComponent} from './components/create-project/create-project.component';
@@ -17,6 +17,7 @@ import { TaskBoardComponent } from './task-board/task-board.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CreateTaskButtonComponent } from './components/create-task/create-task-button/create-task-button.component';
 import { CreateTaskFormularComponent } from './components/create-task/create-task-formular/create-task-formular.component';
+import { EditProjectComponent } from './components/edit-project/edit-project.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CreateTaskFormularComponent } from './components/create-task/create-tas
     NavbarComponent,
     CreateTaskButtonComponent,
     CreateTaskFormularComponent
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+<div *ngIf="project" class="max-w-2xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">Edit Project</h2>
+
+  <form (ngSubmit)="saveProject()" class="space-y-6">
+    <!-- Name Field -->
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+      <input
+        id="name"
+        [(ngModel)]="project.name"
+        name="name"
+        required
+        class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Enter project name">
+    </div>
+
+    <!-- Description Field -->
+    <div>
+      <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+      <textarea
+        id="description"
+        [(ngModel)]="project.description"
+        name="description"
+        rows="4"
+        class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Enter project description"></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-right">
+      <button
+        type="submit"
+        class="px-6 py-2 text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
