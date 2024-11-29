@@ -8,7 +8,8 @@ import { TasksService } from '../services/tasks.service';
 })
 export class TaskBoardComponent implements OnInit {
   tasks: any[] = [];
-  userId = '6745a01ff1cd749f344791b3'; // replace with logged in user id
+  //userId = '6745a01ff1cd749f344791b3'; // replace with logged in user id
+  userId = localStorage.getItem('id') as string
 
   constructor(private tasksService: TasksService) {}
 
@@ -29,5 +30,16 @@ export class TaskBoardComponent implements OnInit {
 
   getTasksByStatus(status: string): any[] {
     return this.tasks.filter((task) => task.status === status);
+  }
+
+  // code for create-task-formular
+  showFormular = false
+
+  acceptEmitF(event:boolean){
+    //console.log("Accept emit formular working")
+    this.showFormular = event
+  }
+  acceptEmitCloseF(event:boolean){
+    this.showFormular = event
   }
 }

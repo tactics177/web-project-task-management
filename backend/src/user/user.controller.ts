@@ -7,4 +7,9 @@ import { CreateUserDto } from './user.dto';
 export class UserController {
   constructor(private readonly usersService: UserService) {}
 
+  @Get('usersForTask')
+  @HttpCode(200)
+  async getTasksByUser() {
+    return this.usersService.getAllUsers();
+  }
 }

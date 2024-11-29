@@ -1,0 +1,151 @@
+<section class="sticky inset-0 bg-gray-800 bg-opacity-50 z-50 h-screen">
+    <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div class="relative w-full max-w-lg bg-white">
+            <div class="absolute top-4 right-4 text-xl hover:text-red-500" (click)="closeFormular()">X</div>
+        <form
+        
+        [formGroup]="createTaskForm"
+        (ngSubmit)="createTask()"
+        class="w-full max-w-lg bg-white p-6 rounded-lg shadow-md"
+        >
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Create Task</h2>
+        <!-- Title -->
+        <div class="mb-4">
+            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+            <input
+            id="title"
+            type="text"
+            formControlName="title"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter task title"
+            />
+            <div *ngIf="createTaskForm.get('title')?.invalid && createTaskForm.get('title')?.touched" class="text-red-500 text-sm">
+            Title is required and must be at least 4 characters long.
+            </div>
+        </div>
+    
+        <!-- Description -->
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea
+            id="description"
+            formControlName="description"
+            rows="3"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter task description"
+            ></textarea>
+            <div *ngIf="createTaskForm.get('description')?.invalid && createTaskForm.get('description')?.touched" class="text-red-500 text-sm">
+            Description is required and must be at least 4 characters long.
+            </div>
+        </div>
+    
+        <!-- Priority -->
+        <div class="mb-4">
+            <label for="priority" class="block text-sm font-medium text-gray-700">Priority</label>
+            <select
+            id="priority"
+            formControlName="priority"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            >
+            <option value="" disabled>Select priority</option>
+            <option *ngFor="let p of [1, 2, 3, 4, 5]" [value]="p">{{ p }}</option>
+            </select>
+            <div *ngIf="createTaskForm.get('priority')?.invalid && createTaskForm.get('priority')?.touched" class="text-red-500 text-sm">
+            Priority is required.
+            </div>
+        </div>
+    
+        <!-- Status -->
+        <div class="mb-4">
+            <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+            <select
+            id="status"
+            formControlName="status"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            >
+            <option value="" disabled>Select status</option>
+            <option value="TO_DO">Backlog</option>
+            <option value="IN_PROGRESS">Ready</option>
+            <option value="COMPLETED">In Progress</option>
+            <option value="BLOCKED">In Review</option>
+            TO_DO
+            </select>
+            <div *ngIf="createTaskForm.get('status')?.invalid && createTaskForm.get('status')?.touched" class="text-red-500 text-sm">
+            Status is required.
+            </div>
+        </div>
+    
+        <!-- Tags -->
+        <div class="mb-4">
+            <label for="tags" class="block text-sm font-medium text-gray-700">Tags</label>
+            
+            <!-- Input Field for Adding Tags -->
+            <div class="flex items-center gap-2 mt-1">
+              <input
+                type="text"
+                [(ngModel)]="tagInput"
+                [ngModelOptions]="{standalone: true}"
+                (keyup.enter)="addTag()"
+                placeholder="Type and press Enter"
+                class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+              <button
+                type="button"
+                (click)="addTag()"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+              >
+                Add
+              </button>
+            </div>
+          
+            <!-- Display Added Tags -->
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span
+                *ngFor="let tag of tags; let i = index"
+                class="flex items-center bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm"
+              >
+                {{ tag }}
+                <button
+                  type="button"
+                  (click)="removeTag(i)"
+                  class="ml-2 text-red-500 hover:text-red-700"
+                >
+                  &times;
+                </button>
+              </span>
+            </div>
+          
+            <!-- Validation Message -->
+            <div *ngIf="tags.length === 0 && createTaskForm.get('tags')?.touched" class="text-red-500 text-sm">
+              At least one tag is required.
+            </div>
+          </div>
+    
+        <!-- Assigned To -->
+        <div class="mb-4">
+            <label for="assignedTo" class="block text-sm font-medium text-gray-700">Assign To</label>
+            <select
+            id="assignedTo"
+            formControlName="assignedTo"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            >
+            <option value="" disabled>Select a user</option>
+            <option *ngFor="let user of users" [ngValue]="user">{{user.email}}, {{user.name}}</option>
+            </select>
+            <div *ngIf="createTaskForm.get('assignedTo')?.invalid && createTaskForm.get('assignedTo')?.touched" class="text-red-500 text-sm">
+            Assigned user is required.
+            </div>
+        </div>
+    
+        <!-- Submit Button -->
+        <button
+            type="submit"
+            [disabled]="createTaskForm.invalid"
+            class="w-full bg-indigo-300 text-white py-1 px-4 rounded-lg hover:bg-indigo-500 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+            Create Task
+        </button>
+        </form>
+    </div>
+  </div>
+</section>
