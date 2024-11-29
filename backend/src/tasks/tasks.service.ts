@@ -55,4 +55,18 @@ export class TasksService {
       where: { assignedToId: userId },
     });
   }
+
+    async getTasksByProject(projectId: string) {
+        const project = await this.prisma.project.findUnique({
+        where: { id: projectId },
+        });
+
+        if (!project) {
+        throw new NotFoundException(`Project with ID ${projectId} not found`);
+        }
+
+        return this.prisma.task.findMany({
+        where: { projectId },
+        });
+    }
 }
