@@ -17,7 +17,8 @@ export class TaskBoardComponent implements OnInit {
 
   ngOnInit(): void {
     //this.fetchTasks();
-    this.projectId = this.route.snapshot.paramMap.get('projectId');
+    this.projectId = this.route.snapshot.paramMap.get('projectId') as string;
+    localStorage.setItem("projectId", this.projectId)
     if (this.projectId) {
       this.fetchTasksByProject(this.projectId);
     }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from 'src/app/services/tasks.service';
 import { task, userForTask } from 'src/app/services/types';
 
@@ -28,7 +29,9 @@ export class CreateTaskFormularComponent {
 
   constructor(
     private fb: FormBuilder,
-    private taskService: TasksService
+    private taskService: TasksService,
+    private router: Router,
+    private route: ActivatedRoute
   ){}
 
   ngOnInit(): void {
@@ -73,6 +76,10 @@ export class CreateTaskFormularComponent {
   createTask(){
     if (this.createTaskForm.invalid) return;
 
+    //const projectId = this.route.snapshot.paramMap.get('id') as string;
+    const projectId = localStorage.getItem("projectId") as string
+
+
     this.taskToCreate = {
       title: this.createTaskForm.value.title,
       description: this.createTaskForm.value.description,
@@ -82,7 +89,8 @@ export class CreateTaskFormularComponent {
       assignedTo: {
         name: this.createTaskForm.value.assignedTo.name,
         email: this.createTaskForm.value.assignedTo.email
-    }
+    },
+    projectId: projectId,
   }
     console.log(`Task form: ${JSON.stringify(this.taskToCreate)}`)
 
