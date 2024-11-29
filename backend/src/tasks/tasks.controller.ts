@@ -8,10 +8,13 @@ export class TasksController {
     constructor(private readonly tasksService: TasksService) {
     }
 
-    @Post()
-    async createTask(@Body() createTaskDto: CreateTaskDto) {
-        return this.tasksService.createTask(createTaskDto);
-    }
+
+  @Post()
+  async createTask(@Body() createTaskDto: CreateTaskDto) {
+    console.log(`createTaskDto: ${JSON.stringify(createTaskDto)}`)
+    return this.tasksService.createTask(createTaskDto);
+  }
+
 
     @Patch(':id')
     async updateTask(

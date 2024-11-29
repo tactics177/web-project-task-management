@@ -2,14 +2,38 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma } from '@prisma/client';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { CreateTaskDto } from './dto/create-task.dto';
 
 @Injectable()
 export class TasksService {
   constructor(private prisma: PrismaService) {}
 
-  async createTask(data: Prisma.TaskCreateInput) {
+  async createTask(
+    //data: Prisma.TaskCreateInput
+    data: CreateTaskDto
+  ) {
+
+    console.log(`data in create prisma task: ${data}`)
+
+    const { assignedTo, ...taskDetails } = data;
+
+    taskDetails.priority = Number(taskDetails.priority)
+
+    const user = await this.prisma.user.findFirst({
+      where: {
+          email: assignedTo.email,
+          name: assignedTo.name,
+        },
+    });
+    if (!user) {
+      throw new Error('User with the specified email and name does not exist.');
+    }
+
     return this.prisma.task.create({
-      data,
+      data: {
+        ...taskDetails,
+        assignedToId: user.id, // Use the user's ID directly for the relation
+      },
     });
   }
 
@@ -21,11 +45,6 @@ export class TasksService {
     if (!task) {
       throw new NotFoundException(`Task with ID ${id} not found`);
     }
-
-    return this.prisma.task.update({
-      where: { id },
-      data,
-    });
   }
 
   async deleteTask(id: string): Promise<{ message: string }> {

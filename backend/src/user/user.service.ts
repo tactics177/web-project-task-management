@@ -33,4 +33,14 @@ export class UserService {
       }
     })
   }
+
+  // get all users in order to assign task
+  async getAllUsers(){
+    return this.prisma.user.findMany({
+      select: {      
+        name: true,      
+        email: true     
+      }
+    })
+  }
 }

@@ -15,6 +15,8 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskBoardComponent } from './task-board/task-board.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CreateTaskButtonComponent } from './components/create-task/create-task-button/create-task-button.component';
+import { CreateTaskFormularComponent } from './components/create-task/create-task-formular/create-task-formular.component';
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
 
 
@@ -30,6 +32,8 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
     TaskBoardComponent,
     ProjectListComponent,
     NavbarComponent,
+    CreateTaskButtonComponent,
+    CreateTaskFormularComponent
     EditProjectComponent
   ],
   imports: [
@@ -37,8 +41,7 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-
+    FormsModule
   ],
   providers: [
     ProjectService,

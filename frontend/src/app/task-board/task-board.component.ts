@@ -10,7 +10,8 @@ import {ActivatedRoute} from "@angular/router";
 export class TaskBoardComponent implements OnInit {
   tasks: any[] = [];
   projectId: string | null = null;
-  userId = '6745a01ff1cd749f344791b3'; // replace with logged in user id
+  //userId = '6745a01ff1cd749f344791b3'; // replace with logged in user id
+  userId = localStorage.getItem('id') as string
 
   constructor(private tasksService: TasksService, private route : ActivatedRoute) {}
 
@@ -37,6 +38,7 @@ export class TaskBoardComponent implements OnInit {
     return this.tasks.filter((task) => task.status === status);
   }
 
+
   fetchTasksByProject(projectId: string): void {
     this.tasksService.getTasksByProject(projectId).subscribe({
       next: (data) => {
@@ -46,5 +48,16 @@ export class TaskBoardComponent implements OnInit {
         console.error('Error fetching tasks:', error);
       },
     });
+
+  // code for create-task-formular
+  showFormular = false
+
+  acceptEmitF(event:boolean){
+    //console.log("Accept emit formular working")
+    this.showFormular = event
+  }
+  acceptEmitCloseF(event:boolean){
+    this.showFormular = event
+
   }
 }

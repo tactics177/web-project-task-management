@@ -1,5 +1,13 @@
-import { IsString, IsOptional, IsInt, IsArray, IsDateString, IsEnum } from 'class-validator';
+import { IsString, IsOptional, IsInt, IsArray, IsDateString, IsEnum, IsEmail } from 'class-validator';
 import { TaskStatus } from '@prisma/client';
+
+export class userForTask {
+  @IsString()
+  name: string;
+
+  @IsEmail()
+  email: string;
+}
 
 export class CreateTaskDto {
   @IsString()
@@ -30,9 +38,11 @@ export class CreateTaskDto {
 
   @IsOptional()
   @IsString()
-  assignedToId?: string;
+  assignedTo?: userForTask;
 
   @IsOptional()
   @IsString()
   parentId?: string;
 }
+
+
