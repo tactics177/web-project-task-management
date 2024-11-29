@@ -16,6 +16,7 @@ npm install
 
 3. Create a .env file in the backend folder and add the following:
 
+JWT_SECRET=yourSuperSecretKey
 DATABASE_URL="your_mongodb_connection_url"
 
 Replace your_mongodb_connection_url with your actual MongoDB connection URL.
