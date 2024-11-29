@@ -33,7 +33,7 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
     ProjectListComponent,
     NavbarComponent,
     CreateTaskButtonComponent,
-    CreateTaskFormularComponent
+    CreateTaskFormularComponent,
     EditProjectComponent
   ],
   imports: [

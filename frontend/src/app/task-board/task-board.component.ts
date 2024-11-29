@@ -48,7 +48,7 @@ export class TaskBoardComponent implements OnInit {
         console.error('Error fetching tasks:', error);
       },
     });
-
+  }
   // code for create-task-formular
   showFormular = false
 
